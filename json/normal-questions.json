@@ -1,0 +1,37 @@
+[
+  {
+    "text": "What is the capital of France?",
+    "answers": ["Berlin", "Madrid", "Paris", "Rome"],
+    "correctAnswer": 2
+  },
+  {
+    "text": "What is 5 + 3?",
+    "answers": ["5", "7", "8", "10"],
+    "correctAnswer": 2
+  },
+  {
+    "text": "What is the square root of 16?",
+    "answers": ["2", "3", "4", "5"],
+    "correctAnswer": 2
+  },
+  {
+    "text": "Which planet is known as the Red Planet?",
+    "answers": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "correctAnswer": 1
+  },
+  {
+    "text": "What is the largest ocean on Earth?",
+    "answers": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Pacific Ocean",
+      "Arctic Ocean"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "text": "What is the chemical symbol for water?",
+    "answers": ["O2", "H2O", "CO2", "NaCl"],
+    "correctAnswer": 1
+  }
+]

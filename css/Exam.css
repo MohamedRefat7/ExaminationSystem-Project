@@ -1,0 +1,259 @@
+/* exam body */
+
+.exam-body {
+  background-image: url(../img/background.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Exam Container */
+
+#exam-container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: black;
+}
+
+#question-container li {
+  cursor: pointer;
+}
+
+#question-container li:hover {
+  background-color: #dce4f4;
+}
+
+.btns {
+  /* width: 60%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* margin: auto; */
+}
+
+.btns button {
+  padding: 10px 20px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.btns button:hover {
+  background-color: #dce4f4;
+  border: 2px solid  #0056b3;
+  color: black;
+}
+
+.btns button:disabled {
+  cursor: not-allowed; 
+  opacity: 0.5; 
+}
+
+#submit-btn {
+  /* margin-left: 20%; */
+  border: 4px solid #dce4f4;
+}
+
+#submit-btn:hover {
+  border: 4px solid  #0056b3;
+}
+
+.counter-pages{
+  margin-top: 15px;
+}
+
+
+.exam-closed {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+/* Question Text Container */
+.question-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dce4f4;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Question Text */
+.question-text h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+/* Flag Icon */
+.mark-question {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+
+
+
+
+
+/* Question and Answer Style */
+#question-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+#question-container li {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+#question-container input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.Exam-question {
+  width: 60%;
+  border-radius: 20px;
+}
+
+.Exam-question h1 {
+  padding: 20px;
+}
+
+.question {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+/* Clickable Answer Styles */
+.question ul li {
+  padding: 10px;
+  margin: 5px 0;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.question ul li:hover {
+  background-color: #f0f0f0;
+}
+
+.question ul li label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.question ul li input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Marked Questions Section */
+.Marked-question {
+  height: 500px;
+  width: 30%;
+  text-align: center;
+  border-radius: 20px;
+  margin: 10px;
+  background-color: #0056b3;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  overflow-y: auto;
+}
+
+.Marked-question hr {
+  width: 80%;
+margin: auto;}
+
+.marked-question-text {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marked-question-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.marked-question-item h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.marked-question-item img {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+/* Exam Timer Style */
+#timer {
+  font-size: 25px;
+  color: green;
+  text-align: right;
+}
+
+#timer.red {
+  color: red;
+}
+
+/* Error Loading Question */
+/* back Container */
+#backContainer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffebee;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+#backErrorMessage {
+  color: #d32f2f;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Back Button */
+.back-btn {
+  background-color: #ffc107;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+  color: #ffc107;
+  border: 2px solid #ffc107;
+}

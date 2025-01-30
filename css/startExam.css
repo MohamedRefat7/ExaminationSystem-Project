@@ -1,0 +1,120 @@
+.startExam-blue-section-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.startExam-blue-section-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #f1f1f1;
+}
+
+.error-message {
+  color: red;
+  font-size: bold 20px;
+  margin-top: 10px;
+  display: none;
+}
+
+.error-message:not(:empty) {
+  display: block;
+}
+
+/* StartExamButton */
+#startExamButton {
+  background-color: #ffc107;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Button hover animation */
+  margin-top: 30px;
+}
+
+#startExamButton:hover {
+  background-color: #0056b3;
+  color: #ffc107;
+  border: 2px solid #ffc107;
+}
+
+/* StartExam Questions Level */
+.level-button {
+  padding: 10px 20px;
+  /* background-color: #007bff;
+  color: white; */
+  background-color: #dce4f4;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.level-button.selected {
+  /* background-color: #0056b3; 
+  color: white; */
+  background-color: #ffc107;
+}
+
+.level-button:hover {
+  background-color: #0056b3;
+  color: white;
+  border: 2px solid #ffc107;
+}
+
+/* Loader */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+.cont div {
+  background-color: #0056b3;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 50%;
+  animation-name: up;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+@keyframes up {
+  to {
+    opacity: 0.5;
+    transform: translateY(20px);
+  }
+}
+
+.one {
+  animation-delay: 0.4s;
+}
+
+.three {
+  animation-delay: 0.8s;
+}

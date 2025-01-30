@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Exam</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/startExam.css" />
+  </head>
+  <body>
+    <div class="container-fluid main-container">
+      <div class="row justify-content-center blue-section">
+        <div class="col-12  startExam-blue-section-content">
+          <h3>Welcome to the Online Exam System</h3>
+          <p>Please select the exam level:</p>
+          <div class="level-selection">
+            <button id="normalButton" class="btn btn-outline-primary level-button">Normal</button>
+            <button id="intermediateButton" class="btn btn-outline-primary level-button">Intermediate</button>
+            <button id="advancedButton" class="btn btn-outline-primary level-button">Advanced</button>
+          </div>
+          <br />
+          <button id="startExamButton" class="btn ">Start Exam</button>
+          <div id="errorMessage" class="error-message"></div>
+        </div>
+      </div>
+    </div>
+    <div id="loader" class="cont loader" style="display: none">
+      <p>
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+      </p>
+    </div>
+    <script src="../js/startExam.js"></script>
+  </body>
+</html>

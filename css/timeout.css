@@ -1,0 +1,28 @@
+.retry-btn {
+  background-color: #ffc107;
+
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: left;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+.retry-btn:hover {
+  background-color: #0056b3;
+  color: #ffc107;
+  border: 2px solid #ffc107;
+}
+
+.exam-closed {
+  display: flex;
+  gap: 30px;
+}
+
+#message{
+  margin-top: 20px;
+}
+

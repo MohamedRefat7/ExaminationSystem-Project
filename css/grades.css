@@ -1,0 +1,31 @@
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: left;
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+/* Action Buttons */
+.action-btn {
+  background-color: #ffc107;
+
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
+  color: #ffc107;
+  border: 2px solid #ffc107;
+}
+
+
+#gradeMessage{
+  margin-top: 20px;
+}

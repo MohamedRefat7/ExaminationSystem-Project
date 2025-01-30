@@ -1,0 +1,42 @@
+[
+  {
+    "text": "What is the output of: console.log(typeof NaN)?",
+    "answers": ["number", "string", "undefined", "object"],
+    "correctAnswer": 0
+  },
+  {
+    "text": "Which method is used to add an element to the end of an array?",
+    "answers": ["push()", "pop()", "shift()", "unshift()"],
+    "correctAnswer": 0
+  },
+  {
+    "text": "What is the purpose of the 'this' keyword in JavaScript?",
+    "answers": [
+      "Refers to the current object",
+      "Refers to a global variable",
+      "Creates a new object",
+      "None of the above"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "text": "What does the '===' operator do in JavaScript?",
+    "answers": [
+      "Compares values and types",
+      "Compares only values",
+      "Assigns a value",
+      "None of the above"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "text": "Which function is used to parse a string to an integer?",
+    "answers": ["parseInt()", "parseFloat()", "Number()", "toInteger()"],
+    "correctAnswer": 0
+  },
+  {
+    "text": "What will the following code return? Boolean(0)",
+    "answers": ["true", "false", "undefined", "Error"],
+    "correctAnswer": 1
+  }
+]

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/Exam.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/all.min.css">
+  </head>
+  <body class="exam-body">
+    <div id="exam-container">
+      <div class="Exam-question col-xl-7 col-12 ">
+        <div id="timer">5:00</div>
+        <div id="question-container"></div>
+      </div>
+
+      <div class="Marked-question  col-xl-4 col-12" >
+        <h1>Marked Question</h1>
+        <hr />
+        <div id="marked-question-content"></div>
+      </div>
+    </div>
+
+    <div id="backContainer" style="display: none">
+      <p id="backErrorMessage"></p>
+      <button id="backButton" class="back-btn">Back To StartExam</button>
+    </div>
+
+    <script src="../js/exam.js"></script>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/all.min.js"></script>
+  </body>
+</html>

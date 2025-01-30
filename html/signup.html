@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Exam SignUp</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/signup.css" />
+  
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/all.min.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="../js/qoutes.js"></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="col-xl-6 col-12   blue-section ">
+        <div class="blue-section-content">
+          <h3 id="quote"></h3>
+        </div>
+      </div>
+      <div class="col-xl-6 col-12  form-section">
+        <form id="signupForm">
+          <input type="text" id="firstName" placeholder="First name" />
+          <div id="firstNameError" class="error-message"></div>
+          <input type="text" id="lastName" placeholder="Last name" />
+          <div id="lastNameError" class="error-message"></div>
+          <input id="email" placeholder="Email" />
+          <div id="emailError" class="error-message"></div>
+          <div class="password-container">
+            <input type="password" id="password" placeholder="Password" />
+            <i
+              class="fas fa-eye toggle-password"
+              id="togglePassword"
+              onclick="togglePasswordVisibility('password', this)"
+            ></i>
+          </div>
+          <div id="passwordError" class="error-message"></div>
+          <div class="password-container">
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm Password"
+            />
+            <i
+              class="fas fa-eye toggle-password"
+              id="toggleConfirmPassword"
+              onclick="togglePasswordVisibility('confirmPassword', this)"
+            ></i>
+          </div>
+          <div id="confirmPasswordError" class="error-message"></div>
+          <button type="submit">Submit</button>
+          <p>
+            Already have an account?
+            <a href="../html/login.html">Sign in</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <script src="../js/signup.js"></script>
+
+
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/all.min.js"></script>
+  </body>
+</html>

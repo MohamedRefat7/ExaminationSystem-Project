@@ -1,0 +1,37 @@
+[
+  {
+    "text": "What is the square root of 64?",
+    "answers": ["6", "8", "10", "12"],
+    "correctAnswer": 1
+  },
+  {
+    "text": "Which gas is most abundant in the Earth's atmosphere?",
+    "answers": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    "correctAnswer": 2
+  },
+  {
+    "text": "Who painted the Mona Lisa?",
+    "answers": [
+      "Vincent van Gogh",
+      "Leonardo da Vinci",
+      "Pablo Picasso",
+      "Claude Monet"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "text": "What is the smallest prime number?",
+    "answers": ["1", "2", "3", "5"],
+    "correctAnswer": 1
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun?",
+    "answers": ["China", "Japan", "South Korea", "Thailand"],
+    "correctAnswer": 1
+  },
+  {
+    "text": "What is the speed of light?",
+    "answers": ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
+    "correctAnswer": 0
+  }
+]
