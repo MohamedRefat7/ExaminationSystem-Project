@@ -98,7 +98,7 @@ function displayQuestion() {
           .join("")}
       </ul>
       <div class="btns col-12 ">
-        <button id="previous-btn" onclick="PreviousQuestion()" class="col-4  col-xl-2" >Prev</button>
+        <button id="previous-btn" onclick="PreviousQuestion()" class="col-5  col-xl-2" >Prev</button>
         <p class="counter-pages ">
           <span id="current-page">${currentQuestionIndex + 1}</span>/
           <span id="total-pages">${questions.length}</span>
