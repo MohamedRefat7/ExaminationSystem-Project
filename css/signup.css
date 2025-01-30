@@ -19,7 +19,7 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  transition: box-shadow 0.3s ease; /* Input focus animation */
+  transition: box-shadow 0.3s ease;
 }
 
 .form-section input:focus,

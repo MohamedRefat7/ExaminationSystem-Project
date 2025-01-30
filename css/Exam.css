@@ -24,23 +24,17 @@
   cursor: pointer;
 }
 
-#question-container li:hover {
-  background-color: #dce4f4;
-}
-
 .btns {
-  /* width: 60%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* margin: auto; */
 }
 
 .btns button {
   padding: 10px 20px;
-  background-color: #0056b3;
+  background: linear-gradient(to bottom right, #0056b3, #007bff);
   color: white;
-  border: none;
+  border: 4px solid #dce4f4;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -49,28 +43,27 @@
 
 .btns button:hover {
   background-color: #dce4f4;
-  border: 2px solid  #0056b3;
-  color: black;
+  border: 4px solid #0056b3;
+  color: white;
 }
 
 .btns button:disabled {
-  cursor: not-allowed; 
-  opacity: 0.5; 
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 #submit-btn {
-  /* margin-left: 20%; */
   border: 4px solid #dce4f4;
 }
 
 #submit-btn:hover {
-  border: 4px solid  #0056b3;
+  border: 4px solid #ffc107;
+  color: #ffc107;
 }
 
-.counter-pages{
-  margin-top: 15px;
+.counter-pages {
+  margin-top: 25px;
 }
-
 
 .exam-closed {
   display: flex;
@@ -84,7 +77,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #dce4f4;
+  background-color: #d7d7d9;
   border-radius: 10px;
   padding: 10px;
 }
@@ -92,7 +85,7 @@
 /* Question Text */
 .question-text h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   flex: 1;
 }
 
@@ -102,12 +95,6 @@
   margin-left: 10px;
 }
 
-
-
-
-
-
-
 /* Question and Answer Style */
 #question-container ul {
   list-style: none;
@@ -116,7 +103,7 @@
 
 #question-container li {
   margin-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 #question-container input[type="radio"] {
@@ -131,10 +118,6 @@
   border-radius: 20px;
 }
 
-.Exam-question h1 {
-  padding: 20px;
-}
-
 .question {
   padding: 10px;
   border-radius: 10px;
@@ -145,14 +128,13 @@
 .question ul li {
   padding: 10px;
   margin: 5px 0;
-  /* border: 1px solid #ccc; */
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .question ul li:hover {
-  background-color: #f0f0f0;
+  background-color: #eeeeee;
 }
 
 .question ul li label {
@@ -171,17 +153,22 @@
   width: 30%;
   text-align: center;
   border-radius: 20px;
-  margin: 10px;
-  background-color: #0056b3;
+  margin-top: 40px;
+  background: linear-gradient(to bottom right, #0056b3, #007bff);
   color: white;
   padding: 10px;
   cursor: pointer;
   overflow-y: auto;
 }
 
+.Marked-question h1 {
+  font-size: 2rem;
+}
+
 .Marked-question hr {
-  width: 80%;
-margin: auto;}
+  width: 90%;
+  margin: auto;
+}
 
 .marked-question-text {
   text-align: left;
@@ -198,12 +185,13 @@ margin: auto;}
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 .marked-question-item h3 {
   margin: 0;
   font-size: 1rem;
+  font-weight: lighter;
+  margin: 0 16px;
 }
 
 .marked-question-item img {
@@ -215,8 +203,14 @@ margin: auto;}
 /* Exam Timer Style */
 #timer {
   font-size: 25px;
-  color: green;
-  text-align: right;
+  color: #007bff;
+}
+
+.question-header-timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
 #timer.red {

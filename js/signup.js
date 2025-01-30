@@ -1,7 +1,7 @@
 document
   .getElementById("signupForm")
   .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
@@ -9,17 +9,20 @@ document
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirmPassword");
 
-    // Reset previous error messages
     document.querySelectorAll(".error-message").forEach((errorDiv) => {
       errorDiv.textContent = "";
     });
 
     let isValid = true;
 
-    // Validate First Name
+    const NamePattern = /^[a-zA-Z]+$/;
     if (firstName.value.trim() === "") {
       document.getElementById("firstNameError").textContent =
         "First name is required.";
+      isValid = false;
+    } else if (!NamePattern.test(firstName.value)) {
+      document.getElementById("firstNameError").textContent =
+        "First name must contain only letters.";
       isValid = false;
     } else if (firstName.value.length < 3 || firstName.value.length > 20) {
       document.getElementById("firstNameError").textContent =
@@ -27,29 +30,32 @@ document
       isValid = false;
     }
 
-    // Validate Last Name
     if (lastName.value.trim() === "") {
       document.getElementById("lastNameError").textContent =
         "Last name is required.";
+      isValid = false;
+    } else if (!NamePattern.test(lastName.value)) {
+      document.getElementById("lastNameError").textContent =
+        "Last name must contain only letters.";
       isValid = false;
     } else if (lastName.value.length < 3 || lastName.value.length > 20) {
       document.getElementById("lastNameError").textContent =
         "Last name must be between 3 and 20 characters.";
       isValid = false;
     }
+    //email validation should start with name as if i enter 11 it will not accept and it should be mm11L@example.com
 
-    // Validate Email
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailPattern =
+      /^[a-zA-Z]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (email.value.trim() === "") {
       document.getElementById("emailError").textContent = "Email is required.";
       isValid = false;
     } else if (!emailPattern.test(email.value)) {
       document.getElementById("emailError").textContent =
-        "Enter a valid email format.";
+        "Enter a valid email format start with name@example.com";
       isValid = false;
     }
 
-    // Validate Password
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (password.value.trim() === "") {
       document.getElementById("passwordError").textContent =
@@ -61,7 +67,6 @@ document
       isValid = false;
     }
 
-    // Validate Confirm Password
     if (confirmPassword.value.trim() === "") {
       document.getElementById("confirmPasswordError").textContent =
         "Please confirm your password.";
@@ -72,7 +77,6 @@ document
       isValid = false;
     }
 
-    // Check if email already exists in local storage
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     const emailExists = storedUsers.some(
       (user) => user.email === email.value.trim()
@@ -83,7 +87,6 @@ document
       isValid = false;
     }
 
-    // If all validations pass
     if (isValid) {
       const user = {
         firstName: firstName.value.trim(),
@@ -95,12 +98,12 @@ document
       storedUsers.push(user);
       localStorage.setItem("users", JSON.stringify(storedUsers));
 
-      // Redirect to login page
+      localStorage.setItem("userName", user.firstName + " " + user.lastName);
+
       window.location.replace("../html/login.html");
     }
   });
 
-// Add event listeners to clear error messages on user input
 document.getElementById("firstName").addEventListener("input", function () {
   if (firstName.value.trim() !== "") {
     document.getElementById("firstNameError").textContent = "";
@@ -133,7 +136,6 @@ document
     }
   });
 
-// eye in the form
 function togglePasswordVisibility(inputId, icon) {
   const inputField = document.getElementById(inputId);
   const isPassword = inputField.type === "password";

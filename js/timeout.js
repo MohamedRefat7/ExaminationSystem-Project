@@ -10,10 +10,8 @@ function showTimeOutMessage() {
   }
 }
 
-// Show the timeout message on page load
 window.onload = showTimeOutMessage;
 
 document.getElementById("retryButton").addEventListener("click", function () {
-  // direct me to startExam.html
   window.location.href = "startExam.html";
 });

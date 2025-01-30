@@ -4,24 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Start Exam</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/all.min.css" />
+    
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/startExam.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    
+
+    <script defer src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="container-fluid main-container">
+    <div class=" main-container my-auto col-11 col-md-10 col-xl-9">
       <div class="row justify-content-center blue-section">
-        <div class="col-12  startExam-blue-section-content">
-          <h3>Welcome to the Online Exam System</h3>
+        <div class="col-12  startExam-blue-section-content mt-5 mt-lg-1 ">
+          
+          <h3>Welcome to Testify</h3>
+        
           <p>Please select the exam level:</p>
-          <div class="level-selection">
-            <button id="normalButton" class="btn btn-outline-primary level-button">Normal</button>
-            <button id="intermediateButton" class="btn btn-outline-primary level-button">Intermediate</button>
-            <button id="advancedButton" class="btn btn-outline-primary level-button">Advanced</button>
+          <div class="level-selection col-12">
+            <button id="normalButton" class="  level-button col-12 col-lg-6 col-xl-2 border-none">Normal</button>
+            <button id="intermediateButton" class="  level-button col-12 col-lg-6 col-xl-2">Intermediate</button>
+            <button id="advancedButton" class="  level-button col-12 col-lg-6 col-xl-2">Advanced</button>
           </div>
           <br />
-          <button id="startExamButton" class="btn ">Start Exam</button>
+          <button id="startExamButton" class=" col-12 col-lg-6 col-xl-2">Start Exam</button>
           <div id="errorMessage" class="error-message"></div>
         </div>
       </div>

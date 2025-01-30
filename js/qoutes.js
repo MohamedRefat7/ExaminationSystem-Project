@@ -9,15 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const quoteElement = document.getElementById("quote");
   let index = 0;
 
-  // Function to update the quote
   const updateQuote = () => {
     quoteElement.textContent = quotes[index];
-    index = (index + 1) % quotes.length; // Loop back to the first quote
+    index = (index + 1) % quotes.length; 
   };
 
-  // Initial quote
   updateQuote();
 
-  // Change quote every 30 seconds
   setInterval(updateQuote, 10000);
 });

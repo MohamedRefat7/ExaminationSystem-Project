@@ -6,17 +6,22 @@
     <title>Exam</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/Exam.css" />
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <script
+      defer
+      src="../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
   </head>
   <body class="exam-body">
-    <div id="exam-container">
-      <div class="Exam-question col-xl-7 col-12 ">
-        <div id="timer">5:00</div>
+    <div id="exam-container" class="my-auto">
+      <div class="Exam-question col-xl-7 col-12">
         <div id="question-container"></div>
       </div>
 
-      <div class="Marked-question  col-xl-4 col-12" >
+      <div class="Marked-question col-xl-4 col-12">
         <h1>Marked Question</h1>
         <hr />
         <div id="marked-question-content"></div>
@@ -29,8 +34,5 @@
     </div>
 
     <script src="../js/exam.js"></script>
-
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/all.min.js"></script>
   </body>
 </html>

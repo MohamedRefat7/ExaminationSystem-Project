@@ -6,17 +6,14 @@ loginForm.addEventListener("submit", (event) => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  // Get error message containers
   const emailError = document.getElementById("emailError");
   const passwordError = document.getElementById("passwordError");
   const errorMessage = document.getElementById("errorMessage");
 
-  // Clear previous error messages
   emailError.textContent = "";
   passwordError.textContent = "";
   errorMessage.textContent = "";
 
-  // Validate required fields
   let isValid = true;
 
   if (!email) {
@@ -30,20 +27,17 @@ loginForm.addEventListener("submit", (event) => {
   }
 
   if (!isValid) {
-    return; // Stop further execution if validation fails
+    return;
   }
 
-  // Retrieve stored users from localStorage
   const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-  // Check if there are any users in localStorage
   if (storedUsers.length === 0) {
     errorMessage.textContent = "No account found. Please sign up first.";
     errorMessage.style.color = "red";
     return;
   }
 
-  // Find the user with the matching email
   const user = storedUsers.find((user) => user.email === email);
 
   if (!user) {
@@ -52,9 +46,8 @@ loginForm.addEventListener("submit", (event) => {
     return;
   }
 
-  // Validate password
   if (user.password === password && user.email === email) {
-    // Redirect to the next page (e.g., startExam.html)
+    localStorage.setItem("userName", user.firstName + " " + user.lastName);
     window.location.href = "startExam.html";
   } else {
     errorMessage.textContent = "Incorrect email or password.";
@@ -62,7 +55,6 @@ loginForm.addEventListener("submit", (event) => {
   }
 });
 
-// Clear error messages when the user starts typing
 document.getElementById("email").addEventListener("input", function () {
   document.getElementById("emailError").textContent = "";
   document.getElementById("errorMessage").textContent = "";

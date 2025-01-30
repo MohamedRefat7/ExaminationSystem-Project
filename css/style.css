@@ -7,18 +7,18 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
-  animation: fadeIn 1s ease-out; /* Fade-in animation */
+  animation: fadeIn 1s ease-out;
 }
 
 .main-container {
-  width: 80%;
-  height: 80%;
+  /* width: 80%; */
+  height: 80vh;
   display: flex;
   flex-wrap: wrap;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1.5s ease-out; /* Fade-in animation */
+  animation: fadeIn 1.5s ease-out;
 }
 
 .blue-section {
@@ -42,7 +42,7 @@ body {
   background-color: white;
   clip-path: circle(0% at 100% 0);
   z-index: 1;
-  animation: slideInCurve 1.5s ease-out forwards; /* Slide-in animation */
+  animation: slideInCurve 1.5s ease-out forwards;
 }
 
 .blue-section-content {

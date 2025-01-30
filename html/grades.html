@@ -4,19 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Grades</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/all.min.css" />
+
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/grades.css" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <script
+      defer
+      src="../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
   </head>
   <body>
-    <div class="container-fluid main-container">
+    <div class="main-container my-auto col-11 col-md-10 col-xl-9">
       <div class="row justify-content-center blue-section">
-        <div class="col-12  blue-section-content">
+        <div class="col-12 blue-section-content">
           <h1>Result</h1>
           <div id="gradeMessage"></div>
           <div class="button-container">
-            <button id="retryButton" class="btn action-btn">Retry Exam</button>
+            <button
+              id="retryButton"
+              class="action-btn col-12 col-lg-6 col-xl-2"
+            >
+              Retry Exam
+            </button>
           </div>
         </div>
       </div>

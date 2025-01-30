@@ -1,11 +1,10 @@
 var errorDisplay = document.getElementsByClassName("error")[0];
 var examContainer = document.getElementById("exam-container");
-
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let markedQuestions = [];
-
+let timeLeft = 300;
 function loadQuestions() {
   const selectedLevel = localStorage.getItem("examLevel");
 
@@ -60,23 +59,27 @@ function displayQuestion() {
   const container = document.getElementById("question-container");
   const question = questions[currentQuestionIndex];
   container.innerHTML = `
-    <h1>Choose the correct answer</h1>
+       <div class="question-header-timer">
+    <h2>Choose the correct answer</h2>
+    <div id="timer">${formatTime(timeLeft)}</div>
+    </div>
     <div class="question ">
-      <div class="question-text">      
-        <h2 >${question.text}</h2>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" x="0" y="0" viewBox="0 0 682.667 682.667" style="enable-background:new 0 0 512 512" xml:space="preserve" class="mark-question">
-          <g>
-            <defs>
-              <clipPath id="a" clipPathUnits="userSpaceOnUse">
-                <path d="M0 512h512V0H0Z" fill="#000000" opacity="1" data-original="#000000"></path>
-              </clipPath>
-            </defs>
-            <g clip-path="url(#a)" transform="matrix(1.33333 0 0 -1.33333 0 682.667)">
-              <path d="M0 0v-512" style="stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(76 512)" fill="none" stroke="#000000" stroke-width="30px" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000"></path>
-              <path d="M0 0s45-30 90-30c71.903 0 108.097 60 180 60 45 0 90-30 90-30v-240s-45 30-90 30c-71.903 0-108.097-60-180-60-45 0-90 30-90 30" style="stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(76 467)" fill="none" stroke="#000000" stroke-width="30px" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000"></path>
-            </g>
-          </g>
-        </svg>
+      <div class="question-text">
+        <h2 id="question-text">${question.text}</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35" x="0" y="0" viewBox="0 0 682.667 682.667" style="enable-background:new 0 0 512 512" xml:space="preserve" class="mark-question">
+  <g>
+    <defs>
+      <clipPath id="a" clipPathUnits="userSpaceOnUse">
+        <path d="M0 512h512V0H0Z" fill="#000000" opacity="1" data-original="#000000"></path>
+      </clipPath>
+    </defs>
+    <g clip-path="url(#a)" transform="matrix(1.33333 0 0 -1.33333 0 682.667)">
+      <path d="M0 0v-512" style="stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(76 512)" fill="black" stroke="#000000" stroke-width="30px" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000"></path>
+      <path d="M0 0s45-30 90-30c71.903 0 108.097 60 180 60 45 0 90-30 90-30v-240s-45 30-90 30c-71.903 0-108.097-60-180-60-45 0-90 30-90 30" style="stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; stroke-dasharray: none; stroke-opacity: 1;" transform="translate(76 467)" fill="black" stroke="#000000" stroke-width="30px" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="none" stroke-opacity="" data-original="#000000"></path>
+    </g>
+  </g>
+</svg>
+
       </div>
       <ul>
         ${question.answers
@@ -117,9 +120,15 @@ function displayQuestion() {
       questions[currentQuestionIndex].selectedAnswer = selectedValue;
     });
   });
+  const questionText = document.getElementById("question-text");
+  questionText.innerText = questions[currentQuestionIndex].text;
+
+  updateFlagColor();
 }
 
 function markQuestion() {
+  const markImage = document.querySelector(".mark-question");
+  const paths = markImage.querySelectorAll("path");
   const markedContent = document.getElementById("marked-question-content");
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -128,54 +137,82 @@ function markQuestion() {
   );
 
   if (isMarked) {
+    // Unmark the question
     markedQuestions = markedQuestions.filter(
       (q) => q.index !== currentQuestionIndex
     );
 
+    // Restore flag color to black
+    paths.forEach((path) => path.setAttribute("fill", "black"));
+
+    // Remove from marked list
     const markedQuestionItem = markedContent.querySelector(
       `.marked-question-item[data-index='${currentQuestionIndex}']`
     );
     if (markedQuestionItem) {
       markedContent.removeChild(markedQuestionItem);
     }
-    return;
+  } else {
+    // Mark the question
+    markedQuestions.push({
+      index: currentQuestionIndex,
+      text: currentQuestion.text,
+    });
+
+    // Change flag color to red
+    paths.forEach((path) => path.setAttribute("fill", "#007bff"));
+
+    // Add to marked questions section
+    const markedQuestionHTML = document.createElement("div");
+    markedQuestionHTML.className = "marked-question-item";
+    markedQuestionHTML.setAttribute("data-index", currentQuestionIndex);
+    markedQuestionHTML.innerHTML = `
+      <h3 class="marked-question-text">Q${currentQuestionIndex + 1}: ${
+      currentQuestion.text
+    }</h3>
+      <img src="../img/svgexport-17.svg" class="delete-marked-question" alt="Remove Marked Question">
+    `;
+
+    markedContent.appendChild(markedQuestionHTML);
+
+    // Clicking a marked question navigates to it
+    markedQuestionHTML.addEventListener("click", () => {
+      saveCurrentAnswer();
+      currentQuestionIndex = parseInt(
+        markedQuestionHTML.getAttribute("data-index"),
+        10
+      );
+      displayQuestion();
+    });
+
+    // Remove when clicking delete button
+    const deleteImg = markedQuestionHTML.querySelector(
+      ".delete-marked-question"
+    );
+    deleteImg.addEventListener("click", (event) => {
+      event.stopPropagation();
+      markedQuestions = markedQuestions.filter(
+        (q) => q.index !== currentQuestionIndex
+      );
+      markedContent.removeChild(markedQuestionHTML);
+      updateFlagColor();
+    });
   }
+}
 
-  const markedQuestionHTML = document.createElement("div");
-  markedQuestionHTML.className = "marked-question-item";
-  markedQuestionHTML.setAttribute("data-index", currentQuestionIndex);
-  markedQuestionHTML.innerHTML = `
-    <h3 class="marked-question-text">Q${currentQuestionIndex + 1}: ${
-    currentQuestion.text
-  }</h3>
-    <img src="../img/svgexport-20.svg" class="delete-marked-question" alt="Remove Marked Question">
-  `;
+function updateFlagColor() {
+  const markImage = document.querySelector(".mark-question");
+  const paths = markImage.querySelectorAll("path");
 
-  markedQuestions.push({
-    index: currentQuestionIndex,
-    text: currentQuestion.text,
-  });
+  const isMarked = markedQuestions.some(
+    (q) => q.index === currentQuestionIndex
+  );
 
-  markedContent.appendChild(markedQuestionHTML);
-
-  markedQuestionHTML.addEventListener("click", () => {
-    saveCurrentAnswer(); 
-    const indexToGo = parseInt(
-      markedQuestionHTML.getAttribute("data-index"),
-      10
-    );
-    currentQuestionIndex = indexToGo;
-    displayQuestion();
-  });
-
-  const deleteImg = markedQuestionHTML.querySelector(".delete-marked-question");
-  deleteImg.addEventListener("click", (event) => {
-    event.stopPropagation();
-    markedQuestions = markedQuestions.filter(
-      (q) => q.index !== currentQuestionIndex
-    );
-    markedContent.removeChild(markedQuestionHTML);
-  });
+  if (isMarked) {
+    paths.forEach((path) => path.setAttribute("fill", "#007bff"));
+  } else {
+    paths.forEach((path) => path.setAttribute("fill", "black"));
+  }
 }
 
 function saveCurrentAnswer() {
@@ -187,7 +224,7 @@ function saveCurrentAnswer() {
 }
 
 function nextQuestion() {
-  saveCurrentAnswer(); // Save the current answer before navigating
+  saveCurrentAnswer();
   if (currentQuestionIndex < questions.length - 1) {
     currentQuestionIndex++;
     displayQuestion();
@@ -196,7 +233,7 @@ function nextQuestion() {
 }
 
 function PreviousQuestion() {
-  saveCurrentAnswer(); // Save the current answer before navigating
+  saveCurrentAnswer();
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     displayQuestion();
@@ -225,7 +262,7 @@ function updateNavigationButtons() {
 }
 
 function submitExam() {
-  saveCurrentAnswer(); // Save the current answer before submitting
+  saveCurrentAnswer();
   for (let i = 0; i < questions.length; i++) {
     if (questions[i].selectedAnswer === undefined) {
       currentQuestionIndex = i;
@@ -240,31 +277,32 @@ function submitExam() {
   window.location.href = "grades.html";
 }
 
-function startTimer(duration) {
-  let timeLeft = duration;
-  const timer = document.getElementById("timer");
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").textContent = formatTime(timeLeft);
 
-  const interval = setInterval(() => {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-
-    if (timeLeft <= 10) timer.classList.add("red");
-
-    if (timeLeft <= 0) {
-      clearInterval(interval);
-
-      localStorage.setItem("examStatus", "timeout");
-
-      window.location.href = "timeout.html";
+    if (timeLeft <= 30) {
+      document.getElementById("timer").classList.add("red");
     }
 
-    timeLeft--;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      localStorage.setItem("examStatus", "timeout");
+      window.location.href = "timeout.html";
+    }
   }, 1000);
+}
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  return `${minutes}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
 function displayGrades() {
   const userName = localStorage.getItem("userName") || "Student";
+
   const grade = localStorage.getItem("userGrade") || "0%";
 
   const gradeMessage = document.getElementById("gradeMessage");
