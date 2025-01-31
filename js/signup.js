@@ -1,6 +1,10 @@
-document
-  .getElementById("signupForm")
-  .addEventListener("submit", function (event) {
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("signupForm");
+  const submitButton = document.querySelector(
+    "#signupForm button[type='submit']"
+  );
+
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const firstName = document.getElementById("firstName");
@@ -43,7 +47,6 @@ document
         "Last name must be between 3 and 20 characters.";
       isValid = false;
     }
-    //email validation should start with name as if i enter 11 it will not accept and it should be mm11L@example.com
 
     const emailPattern =
       /^[a-zA-Z]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -88,54 +91,47 @@ document
     }
 
     if (isValid) {
-      const user = {
-        firstName: firstName.value.trim(),
-        lastName: lastName.value.trim(),
-        email: email.value.trim(),
-        password: password.value.trim(),
-      };
+      // Show spinner and disable button
+      submitButton.innerHTML = `
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+      `;
+      submitButton.disabled = true;
 
-      storedUsers.push(user);
-      localStorage.setItem("users", JSON.stringify(storedUsers));
+      setTimeout(() => {
+        // Store user data
+        const user = {
+          firstName: firstName.value.trim(),
+          lastName: lastName.value.trim(),
+          email: email.value.trim(),
+          password: password.value.trim(),
+        };
 
-      localStorage.setItem("userName", user.firstName + " " + user.lastName);
+        storedUsers.push(user);
+        localStorage.setItem("users", JSON.stringify(storedUsers));
+        localStorage.setItem("userName", user.firstName + " " + user.lastName);
 
-      window.location.replace("../html/login.html");
+        window.location.replace("../html/login.html");
+      }, 2000);
+    } else {
+      submitButton.innerHTML = "Submit";
+      submitButton.disabled = false;
     }
   });
-
-document.getElementById("firstName").addEventListener("input", function () {
-  if (firstName.value.trim() !== "") {
-    document.getElementById("firstNameError").textContent = "";
-  }
 });
 
-document.getElementById("lastName").addEventListener("input", function () {
-  if (lastName.value.trim() !== "") {
-    document.getElementById("lastNameError").textContent = "";
+// Remove error messages when user types
+["firstName", "lastName", "email", "password", "confirmPassword"].forEach(
+  (id) => {
+    document.getElementById(id).addEventListener("input", function () {
+      if (this.value.trim() !== "") {
+        document.getElementById(id + "Error").textContent = "";
+      }
+    });
   }
-});
+);
 
-document.getElementById("email").addEventListener("input", function () {
-  if (email.value.trim() !== "") {
-    document.getElementById("emailError").textContent = "";
-  }
-});
-
-document.getElementById("password").addEventListener("input", function () {
-  if (password.value.trim() !== "") {
-    document.getElementById("passwordError").textContent = "";
-  }
-});
-
-document
-  .getElementById("confirmPassword")
-  .addEventListener("input", function () {
-    if (confirmPassword.value.trim() !== "") {
-      document.getElementById("confirmPasswordError").textContent = "";
-    }
-  });
-
+// Toggle password visibility
 function togglePasswordVisibility(inputId, icon) {
   const inputField = document.getElementById(inputId);
   const isPassword = inputField.type === "password";

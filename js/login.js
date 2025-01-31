@@ -1,67 +1,80 @@
-const loginForm = document.getElementById("loginForm");
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("loginForm");
+  const submitButton = document.querySelector(
+    "#loginForm button[type='submit']"
+  );
 
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-  const emailError = document.getElementById("emailError");
-  const passwordError = document.getElementById("passwordError");
-  const errorMessage = document.getElementById("errorMessage");
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+    const errorMessage = document.getElementById("errorMessage");
 
-  emailError.textContent = "";
-  passwordError.textContent = "";
-  errorMessage.textContent = "";
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    errorMessage.textContent = "";
 
-  let isValid = true;
+    let isValid = true;
 
-  if (!email) {
-    emailError.textContent = "Email is required.";
-    isValid = false;
-  }
+    if (!email) {
+      emailError.textContent = "Email is required.";
+      isValid = false;
+    }
 
-  if (!password) {
-    passwordError.textContent = "Password is required.";
-    isValid = false;
-  }
+    if (!password) {
+      passwordError.textContent = "Password is required.";
+      isValid = false;
+    }
 
-  if (!isValid) {
-    return;
-  }
+    if (!isValid) {
+      return;
+    }
 
-  const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-  if (storedUsers.length === 0) {
-    errorMessage.textContent = "No account found. Please sign up first.";
-    errorMessage.style.color = "red";
-    return;
-  }
+    if (storedUsers.length === 0) {
+      errorMessage.textContent = "No account found. Please sign up first.";
+      errorMessage.style.color = "red";
+      return;
+    }
 
-  const user = storedUsers.find((user) => user.email === email);
+    const user = storedUsers.find((user) => user.email === email);
 
-  if (!user) {
-    errorMessage.textContent = "No account found. Please sign up first.";
-    errorMessage.style.color = "red";
-    return;
-  }
+    if (!user) {
+      errorMessage.textContent = "No account found. Please sign up first.";
+      errorMessage.style.color = "red";
+      return;
+    }
 
-  if (user.password === password && user.email === email) {
-    localStorage.setItem("userName", user.firstName + " " + user.lastName);
-    window.location.href = "startExam.html";
-  } else {
-    errorMessage.textContent = "Incorrect email or password.";
-    errorMessage.style.color = "red";
-  }
-});
+    if (user.password === password && user.email === email) {
+      // Show spinner and disable button
+      submitButton.innerHTML = `
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+      `;
+      submitButton.disabled = true;
 
-document.getElementById("email").addEventListener("input", function () {
-  document.getElementById("emailError").textContent = "";
-  document.getElementById("errorMessage").textContent = "";
-});
+      setTimeout(() => {
+        localStorage.setItem("userName", user.firstName + " " + user.lastName);
+        window.location.href = "startExam.html";
+      }, 2000); // Simulated delay for login process
+    } else {
+      errorMessage.textContent = "Incorrect email or password.";
+      errorMessage.style.color = "red";
+    }
+  });
 
-document.getElementById("password").addEventListener("input", function () {
-  document.getElementById("passwordError").textContent = "";
+  // Remove error messages when the user types
+  ["email", "password"].forEach((id) => {
+    document.getElementById(id).addEventListener("input", function () {
+      document.getElementById(id + "Error").textContent = "";
+      errorMessage.textContent = "";
+    });
+  });
 });
 
 // Eye in the form
