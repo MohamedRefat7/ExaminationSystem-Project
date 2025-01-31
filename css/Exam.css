@@ -251,3 +251,10 @@
   color: #ffc107;
   border: 2px solid #ffc107;
 }
+
+@media (max-width: 580px) {
+  /* Adjust breakpoint as needed */
+  .exam-body {
+    background: none !important;
+  }
+}
