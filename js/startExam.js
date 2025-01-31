@@ -45,6 +45,8 @@ document
     if (!selectedLevel) {
       errorMessage.textContent = "Please select an exam level!";
 
+      errorMessage.style.padding = "8px";
+
       return;
     }
 
