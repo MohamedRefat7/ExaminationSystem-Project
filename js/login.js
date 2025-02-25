@@ -36,12 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (storedUsers.length === 0) {
-      errorMessage.textContent = "No account found. Please sign up first.";
-      errorMessage.style.color = "red";
-      return;
-    }
-
     const user = storedUsers.find((user) => user.email === email);
 
     if (!user) {

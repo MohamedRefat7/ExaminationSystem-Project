@@ -33,5 +33,20 @@
     "text": "What is the chemical symbol for water?",
     "answers": ["O2", "H2O", "CO2", "NaCl"],
     "correctAnswer": 1
+  },
+  {
+    "text": "What is the tallest mountain in the world?",
+    "answers": [
+      "Mount Everest",
+      "Mount Kilimanjaro",
+      "Mount McKinley",
+      "Mount Fuji"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "text": "What is the largest planet in our solar system?",
+    "answers": ["Jupiter", "Saturn", "Neptune", "Uranus"],
+    "correctAnswer": 0
   }
 ]

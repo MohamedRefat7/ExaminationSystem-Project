@@ -4,7 +4,7 @@ let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let markedQuestions = [];
-let timeLeft = 300;
+let timeLeft = 120;
 function loadQuestions() {
   const selectedLevel = localStorage.getItem("examLevel");
 
@@ -39,7 +39,8 @@ function loadQuestions() {
 
       const retryContainer = document.getElementById("backContainer");
       const errorMessage = document.getElementById("backErrorMessage");
-      errorMessage.textContent = error.message;
+      errorMessage.textContent =
+        "Failed to load questions. Please try again Or try another exam Level.";
       retryContainer.style.display = "block";
 
       document.getElementById("backButton").addEventListener("click", () => {
@@ -47,6 +48,7 @@ function loadQuestions() {
       });
     });
 }
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -282,7 +284,7 @@ function startTimer() {
     timeLeft--;
     document.getElementById("timer").textContent = formatTime(timeLeft);
 
-    if (timeLeft <= 30) {
+    if (timeLeft <= 45) {
       document.getElementById("timer").classList.add("red");
     }
 
